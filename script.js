@@ -34,6 +34,21 @@ function setBackgroundColorById(elementId){
 }
 
 
+document.addEventListener('keyup', function(event){
+      const playerPressed = event.key;
+      const playerPressedElementToUpperCase = playerPressed.toUpperCase();
+
+      const currentAlphabetElement = document.getElementById('show-alphabet');
+      const currentAlphabet = currentAlphabetElement.innerText;
+
+
+      if(playerPressedElementToUpperCase == currentAlphabet){
+            console.log("you got a new life");
+      }else{
+            console.log('you lost a life');
+      }
+})
+
 
 
 
@@ -64,7 +79,7 @@ function continuePlaying(){
 
       const showId = document.getElementById('show-alphabet');
       showId.innerText = alphabetToUpperCase;
-      console.log(alphabet);
+      // console.log(alphabet);
 
       setBackgroundColorById(alphabet);
 }
