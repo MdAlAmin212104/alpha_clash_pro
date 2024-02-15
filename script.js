@@ -124,4 +124,14 @@ function play(){
 function gameOver(){
       hiddenElementById('play-ground');
       showElementById('final-score');
+
+      const lastScore = addScoresById('current-score');
+      setElementValueById('game-score', lastScore);
+
+
+      //clear the last selected alphabet
+
+      
+      
+      
 }
