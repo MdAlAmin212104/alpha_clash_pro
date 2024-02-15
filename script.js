@@ -38,6 +38,11 @@ function addScoresById(elementId){
       const value = parseInt(elementValueText);
       return value;
 }
+function getElementTextById(elementId){
+      const element = document.getElementById(elementId);
+      const text = element.innerText;
+      return text;
+}
 
 function setElementValueById(elementId,  value){
       const element = document.getElementById(elementId);
@@ -48,6 +53,10 @@ function setElementValueById(elementId,  value){
 document.addEventListener('keyup', function(event){
       const playerPressed = event.key;
       const playerPressedElementToUpperCase = playerPressed.toUpperCase();
+
+      if(playerPressed ==='Escape'){
+            gameOver();
+      }
 
       const currentAlphabetElement = document.getElementById('show-alphabet');
       const currentAlphabet = currentAlphabetElement.innerText;
@@ -131,7 +140,11 @@ function gameOver(){
 
       //clear the last selected alphabet
 
-      
+      const currentAlphabet = getElementTextById('show-alphabet');
+      const currentAlphabetSmall = currentAlphabet.toLowerCase();
+      console.log(currentAlphabet);
+      removeBackgroundColorById(currentAlphabetSmall);
+
       
       
 }
