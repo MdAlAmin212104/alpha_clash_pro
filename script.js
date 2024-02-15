@@ -1,9 +1,3 @@
-// function play(){
-//       const homeSection = document.getElementById('home-screen');
-//       homeSection.classList.add('hidden');
-//       const playGround = document.getElementById('play-ground');
-//       playGround.classList.remove('hidden');
-// }
 
 function hiddenElementById(elementId){
       const element = document.getElementById(elementId);
@@ -29,8 +23,20 @@ function getARandomAlphabet(){
 
 function setBackgroundColorById(elementId){
       const element = document.getElementById(elementId);
-      element.classList.add('bg-orange-400')
+      element.classList.add('bg-orange-400');
 
+}
+function removeBackgroundColorById(elementId){
+      const element = document.getElementById(elementId);
+      element.classList.remove('bg-orange-400');
+}
+
+
+function addScoresById(elementId){
+      const element = document.getElementById(elementId);
+      const elementValueText = element.innerText;
+      const value = parseInt(elementValueText);
+      return value;
 }
 
 
@@ -43,9 +49,19 @@ document.addEventListener('keyup', function(event){
 
 
       if(playerPressedElementToUpperCase == currentAlphabet){
-            console.log("you got a new life");
+            removeBackgroundColorById(playerPressed);
+            continuePlaying();
+
+            const currentScoreElement = document.getElementById('current-score');
+            const currentScore = addScoresById('current-score');
+            const newScore = currentScore + 1;
+            currentScoreElement.innerText = newScore;
       }else{
-            console.log('you lost a life');
+
+            const currentLifeElement = document.getElementById('current-life');
+            const currentLife = addScoresById('current-life');
+            const newLife = currentLife - 1;
+            currentLifeElement.innerText = newLife;
       }
 })
 
