@@ -39,6 +39,11 @@ function addScoresById(elementId){
       return value;
 }
 
+function setElementValueById(elementId,  value){
+      const element = document.getElementById(elementId);
+      element.innerText = value;
+
+}
 
 document.addEventListener('keyup', function(event){
       const playerPressed = event.key;
@@ -60,8 +65,12 @@ document.addEventListener('keyup', function(event){
 
             const currentLifeElement = document.getElementById('current-life');
             const currentLife = addScoresById('current-life');
-            const newLife = currentLife - 1;
-            currentLifeElement.innerText = newLife;
+            const updateLife = currentLife - 1;
+            currentLifeElement.innerText = updateLife;
+
+            if(updateLife === 0){
+                  gameOver();
+            }
       }
 })
 
@@ -101,7 +110,18 @@ function continuePlaying(){
 }
 
 function play(){
+      // hidde everything show only the play ground
       hiddenElementById('home-screen');
+      hiddenElementById('final-score')
       showElementById('play-ground');
+
+      //reset score and life
+      setElementValueById('current-life', 5);
+      setElementValueById('current-score', 0);
+
       continuePlaying();
+}
+function gameOver(){
+      hiddenElementById('play-ground');
+      showElementById('final-score');
 }
