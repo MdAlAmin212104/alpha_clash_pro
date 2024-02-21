@@ -53,6 +53,7 @@ function setElementValueById(elementId,  value){
 const audio = new Audio();
 let isGamePlayOn = false;
 const artBoard = document.getElementById('art-board');
+const modalBox = document.getElementById('modal-box');
 
 
 document.addEventListener('keyup', function(event){
@@ -162,7 +163,15 @@ function gameOver(){
       console.log(currentAlphabet);
       removeBackgroundColorById(currentAlphabetSmall);
       isGamePlayOn = false;
-      
-      
-      
+      artBoard.style.background = "linear-gradient(#FFFFFFB3 100%, red)";
 }
+
+function modalOpen(event){
+      if(event.clientY < 20){
+            modalBox.style.display = "flex";
+      }
+}
+function modalClose(event){
+      modalBox.style.display = "none";
+}
+document.body.onmousemove = modalOpen;
