@@ -51,8 +51,12 @@ function setElementValueById(elementId,  value){
 }
 
 const audio = new Audio();
+let isGamePlayOn = false;
 
 document.addEventListener('keyup', function(event){
+      if(isGamePlayOn == false){
+            return;
+      }
       const playerPressed = event.key;
       const playerPressedElementToUpperCase = playerPressed.toUpperCase();
 
@@ -126,6 +130,7 @@ function continuePlaying(){
 
 function play(){
       // hidde everything show only the play ground
+      
       hiddenElementById('home-screen');
       hiddenElementById('final-score')
       showElementById('play-ground');
@@ -133,24 +138,26 @@ function play(){
       //reset score and life
       setElementValueById('current-life', 5);
       setElementValueById('current-score', 0);
+      isGamePlayOn = true;
 
       continuePlaying();
 }
 function gameOver(){
       hiddenElementById('play-ground');
       showElementById('final-score');
-
+      
       const lastScore = addScoresById('current-score');
       setElementValueById('game-score', lastScore);
-
-
+      
+      
       //clear the last selected alphabet
-
+      
       const currentAlphabet = getElementTextById('show-alphabet');
       const currentAlphabetSmall = currentAlphabet.toLowerCase();
       console.log(currentAlphabet);
       removeBackgroundColorById(currentAlphabetSmall);
-
+      isGamePlayOn = false;
+      
       
       
 }
