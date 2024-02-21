@@ -52,6 +52,8 @@ function setElementValueById(elementId,  value){
 
 const audio = new Audio();
 let isGamePlayOn = false;
+const artBoard = document.getElementById('art-board');
+
 
 document.addEventListener('keyup', function(event){
       if(isGamePlayOn == false){
@@ -86,6 +88,9 @@ document.addEventListener('keyup', function(event){
             currentLifeElement.innerText = updateLife;
             audio.src = './images/invalid.mp3';
             audio.play();
+            const updateLifePercent = (updateLife/5) * 100;
+            artBoard.style.background = `linear-gradient(#FFFFFFB3 ${updateLifePercent}%, red)`;
+            console.log(updateLifePercent);
 
             if(updateLife === 0){
                   gameOver();
