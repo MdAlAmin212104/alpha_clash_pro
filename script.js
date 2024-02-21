@@ -50,6 +50,8 @@ function setElementValueById(elementId,  value){
 
 }
 
+const audio = new Audio();
+
 document.addEventListener('keyup', function(event){
       const playerPressed = event.key;
       const playerPressedElementToUpperCase = playerPressed.toUpperCase();
@@ -65,6 +67,8 @@ document.addEventListener('keyup', function(event){
       if(playerPressedElementToUpperCase == currentAlphabet){
             removeBackgroundColorById(playerPressed);
             continuePlaying();
+            audio.src = "./images/success.mp3";
+            audio.play();
 
             const currentScoreElement = document.getElementById('current-score');
             const currentScore = addScoresById('current-score');
@@ -76,6 +80,8 @@ document.addEventListener('keyup', function(event){
             const currentLife = addScoresById('current-life');
             const updateLife = currentLife - 1;
             currentLifeElement.innerText = updateLife;
+            audio.src = './images/invalid.mp3';
+            audio.play();
 
             if(updateLife === 0){
                   gameOver();
